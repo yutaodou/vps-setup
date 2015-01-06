@@ -1,0 +1,22 @@
+---
+  - authorized_key: user={{user}} path={{sshPublicKey}}
+  - authorized_key: user=root path={{sshPublicKey}}
+    when: allowRootLogin == true
+
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#Port" line="Port {{sshPort}}"
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#PermitRootLogin" line="PermitRootLogin no"
+    when: allowRootLogin == false
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#PermitEmptyPasswords" line="PermitEmptyPasswords no"
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#PasswordAuthentication" line="PasswordAuthentication no"
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#RSAAuthentication" line="RSAAuthentication yes"
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#PubkeyAuthentication" line="PubkeyAuthentication yes"
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#AuthorizedKeysFile" line="AuthorizedKeysFile .ssh/authorized_keys"
+  - lineinfile: dest=/etc/ssh/sshd_config insertafter="#UseDNS" line="UseDNS no"
+  - lineinfile: dest=/etc/ssh/sshd_config line="AllowUsers {{user}}" 
+    when: allowRootLogin == false
+
+  - lineinfile: dest=/etc/ssh/sshd_config line="AllowUsers {{user}} root" 
+    when: allowRootLogin == false
+
+  - name: restart sshd
+    service: name=sshd state=restarted

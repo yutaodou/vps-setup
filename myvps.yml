@@ -1,0 +1,9 @@
+---
+- hosts: my-vps
+  user: root
+  gather_facts: False
+  roles:
+    - basic
+    - setup-user
+    - enable-ssh
+    - install-shadowsocks

@@ -1,0 +1,9 @@
+---
+  - name: add new group
+    group: name={{group}} state=present
+
+  - name: add new user
+    user: name={{user}} shell=/bin/bash groups={{group}} password={{password}} createhome=yes state=present
+
+  - name: grant sudo
+    lineinfile: "dest=/etc/sudoers line='{{user}}    ALL=(ALL) NOPASSWD: ALL'"

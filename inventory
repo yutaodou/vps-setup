@@ -1,0 +1,12 @@
+[my-vps]
+<your-vps-ip-address-here>
+
+
+[all:vars]
+group=<new-group-here>
+user=<new-user-here>
+password=<new-user-password-here>
+sshPublicKey=<path-to-your-ssh-public-key>
+sshPort=<your-customized-ssh-port>
+hostname=<vps-hostname-here>
+allowRootLogin=false

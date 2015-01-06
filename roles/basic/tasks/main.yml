@@ -1,0 +1,4 @@
+---
+  - hostname: name={{hostname}}
+  
+  - command: yum install -y epel-release && yum -y update

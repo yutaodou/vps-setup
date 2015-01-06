@@ -1,0 +1,10 @@
+---
+  - script: install-shadowsocks.sh
+
+  - copy: src=shadowsocks.json dest=/etc/shadowsocks.json
+
+  - copy: src=supervisor-shadowsocks.conf dest=/tmp/supervisor-shadowsocks.conf
+
+  - command: su root -c "cat /tmp/supervisor-shadowsocks.conf >> /etc/supervisord.conf"
+
+  - command: service supervisord restart && supervisorctl reload
