@@ -1,12 +1,12 @@
 [my-vps]
-<your-vps-ip-address-here>
+139.162.110.158
 
 
 [all:vars]
-group=<new-group-here>
-user=<new-user-here>
-password=<new-user-password-here>
-sshPublicKey=<path-to-your-ssh-public-key>
-sshPort=<your-customized-ssh-port>
-hostname=<vps-hostname-here>
-allowRootLogin=false
+group=ddou
+user=ddou
+password=$6$rounds=656000$3sapXIuqOFM3J9KJ$5KMHkaARmxTyIF590pydVJU8MqcuurcJp1ifP0clEBvm7BwG.GIWVdL.aenwUUmlgX0u0ravMPL53bTEkJloP1
+sshPublicKey=~/.ssh/ddou_rsa.pub
+sshPort=22
+hostname=linode-tokyo
+allowRootLogin=true

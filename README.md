@@ -16,3 +16,7 @@ This ansible playbook perform the following operations:
     See the ansible [FAQ](http://docs.ansible.com/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module) for how to generate encrpted password for the new user.
 
 3. Run the ansible playbook
+
+```
+ansible-playbook -i inventory myvps.yml --user root --ask-pass
+```
